@@ -1,0 +1,13 @@
+-Harga nasional — rata-rata harga semua provinsi per hari per komoditas. Ini jadi angka referensi/benchmark.
+-Gap dari nasional — selisih harga suatu provinsi vs rata-rata nasional dalam rupiah. Kalau positif berarti provinsi itu lebih mahal dari rata-rata, kalau negatif berarti lebih murah.
+-Gap pct — gap dalam persen. Ini yang dipakai untuk klasifikasi surplus/defisit di step berikutnya.
+-Perubahan harian — delta harga hari ini vs kemarin per provinsi. Berguna untuk deteksi lonjakan tiba-tiba.
+-Rolling 7 hari — rata-rata harga 7 hari terakhir. Memperhalus fluktuasi harian yang noise, memperlihatkan tren jangka pendek.
+-Rolling 30 hari — rata-rata harga 30 hari terakhir. Memperlihatkan tren jangka menengah — apakah bulan ini secara umum lebih   mahal atau lebih murah.
+-Volatilitas 7 hari — standar deviasi harga 7 hari terakhir. Semakin tinggi nilainya, semakin liar fluktuasi harga di wilayah itu.
+-Kolom waktu — tahun, bulan, minggu, hari dalam seminggu. Berguna untuk model mendeteksi pola musiman, misalnya "harga cabai selalu naik di bulan puasa".
+
+Analisis Gap
+gap_pct < -5%  →  SURPLUS   (harga terlalu murah, petani tertekan)
+gap_pct ±5%    →  NORMAL    (distribusi sehat)
+gap_pct > +5%  →  DEFISIT   (harga terlalu mahal, konsumen tertekan)
